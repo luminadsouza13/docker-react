@@ -6,9 +6,15 @@ pipeline{
                 echo 'Stage1'               
             }
         }
-        stage('stage2'){
+        stage('Docker Build'){
             steps{
-                echo 'Stage2'               
+                sh 'docker build -t MYIMAGE -f Dockerfile.dev .'            
+            }
+        }
+        
+        stage('Docker Test'){
+            steps{
+                sh 'docker run -p 3000:3000 MYIMAGE'            
             }
         }
 
