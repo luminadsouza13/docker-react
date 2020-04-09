@@ -6,9 +6,14 @@ pipeline{
                 echo 'Stage1'               
             }
         }
-        stage('Docker Build'){
+        stage('Docker Dev'){
             steps{
-                sh 'docker-compose up --build'            
+                sh 'docker build -t myimage:latest -f Dockerfile.dev .'            
+            }
+        }
+        stage('Docker Test'){
+            steps{
+                sh 'docker run -e CI=true myimage:latest npn run test -- --coverage'            
             }
         }
         
