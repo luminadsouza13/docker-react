@@ -8,16 +8,10 @@ pipeline{
         }
         stage('Docker Build'){
             steps{
-                sh 'docker build -t myimage:latest -f Dockerfile.dev .'            
+                sh 'docker-compose up --build'            
             }
         }
         
-        stage('Docker Test'){
-            steps{
-                sh 'docker run -i -p 3000:3000 myimage:latest'            
-            }
-        }
-
     }
 }
         
