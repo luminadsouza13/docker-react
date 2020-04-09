@@ -13,7 +13,7 @@ pipeline{
         }
         stage('Docker Test'){
             steps{
-                sh 'docker run -e CI=true myimage:latest npn run test -- --coverage'            
+                sh 'docker run -e CI=true myimage:latest npm run test -- --coverage'            
             }
         }
         
