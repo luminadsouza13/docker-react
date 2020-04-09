@@ -14,7 +14,7 @@ pipeline{
         
         stage('Docker Test'){
             steps{
-                sh 'docker run -p 3000:3000 myimage:latest'            
+                sh 'docker run -it -p 3000:3000 myimage:latest'            
             }
         }
 
